@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Forest Focus</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <p id="message" class="message">Ready to focus? Plant a tree.</p>
+
+    <div class="ring-wrap">
+      <svg id="ring" viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="ring-bg" cx="100" cy="100" r="94" />
+        <circle id="ring-progress" class="ring-progress" cx="100" cy="100" r="94" />
+      </svg>
+
+      <svg id="plant" viewBox="0 0 200 200" role="img" aria-label="Growing tree">
+        <circle cx="100" cy="100" r="86" fill="#e5e2a8" />
+
+        <!-- Stage 0: seed -->
+        <g class="stage" data-stage="0">
+          <ellipse cx="100" cy="126" rx="7" ry="4.5" fill="#5b3a17" />
+        </g>
+
+        <!-- Stage 1: sprout -->
+        <g class="stage" data-stage="1">
+          <path d="M100 128 Q100 112 100 104" stroke="#4f8a2e" stroke-width="3" fill="none" stroke-linecap="round" />
+          <ellipse cx="91" cy="103" rx="9" ry="5" fill="#7ab648" transform="rotate(-25 91 103)" />
+          <ellipse cx="109" cy="103" rx="9" ry="5" fill="#8fc95a" transform="rotate(25 109 103)" />
+        </g>
+
+        <!-- Stage 2: sapling -->
+        <g class="stage" data-stage="2">
+          <path d="M100 128 Q98 105 100 82" stroke="#6b4a22" stroke-width="4" fill="none" stroke-linecap="round" />
+          <ellipse cx="88" cy="96" rx="11" ry="5.5" fill="#6aa83b" transform="rotate(-30 88 96)" />
+          <ellipse cx="112" cy="94" rx="11" ry="5.5" fill="#7ab648" transform="rotate(30 112 94)" />
+          <ellipse cx="90" cy="82" rx="10" ry="5" fill="#8fc95a" transform="rotate(-35 90 82)" />
+          <ellipse cx="110" cy="80" rx="10" ry="5" fill="#6aa83b" transform="rotate(35 110 80)" />
+          <ellipse cx="100" cy="74" rx="6" ry="9" fill="#8fc95a" />
+        </g>
+
+        <!-- Stage 3: young tree -->
+        <g class="stage" data-stage="3">
+          <rect x="95" y="104" width="10" height="26" fill="#6b4a22" />
+          <polygon points="100,52 128,100 72,100" fill="#4f9a3a" />
+          <polygon points="100,70 134,116 66,116" fill="#3f8a30" />
+        </g>
+
+        <!-- Stage 4: full tree -->
+        <g class="stage" data-stage="4">
+          <rect x="94" y="108" width="12" height="22" fill="#6b4a22" />
+          <polygon points="100,30 122,66 78,66" fill="#5aa83a" />
+          <polygon points="100,46 130,88 70,88" fill="#4a9a32" />
+          <polygon points="100,64 138,112 62,112" fill="#3a8a2a" />
+        </g>
+
+        <!-- Soil bowl -->
+        <path d="M44 128 Q100 114 156 128 Q152 176 100 178 Q48 176 44 128 Z" fill="#6e4520" />
+        <path d="M44 128 Q100 114 156 128 Q100 138 44 128 Z" fill="#855a2c" />
+      </svg>
+    </div>
+
+    <div class="tag">🌱 <span id="stage-label">Seed</span></div>
+
+    <div id="time" class="time">25:00</div>
+
+    <div id="setup" class="setup">
+      <div class="presets">
+        <button class="preset" data-min="15">15</button>
+        <button class="preset active" data-min="25">25</button>
+        <button class="preset" data-min="45">45</button>
+        <button class="preset" data-min="60">60</button>
+      </div>
+      <label class="custom">
+        Custom (min)
+        <input id="minutes" type="number" min="1" max="180" value="25" />
+      </label>
+    </div>
+
+    <button id="action" class="action">Plant</button>
+
+    <section class="forest-section">
+      <h2>Your forest <span id="forest-count"></span></h2>
+      <div id="forest" class="forest"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
